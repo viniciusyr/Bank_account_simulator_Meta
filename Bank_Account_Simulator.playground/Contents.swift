@@ -16,18 +16,20 @@ var input = 0
 repeat {
     print("Which option do you choose? (1,2 or 3)")
     input = Int.random(in: 1...5)
-} while input < 0
-print("The selected option is \(input)")
+    
+    print("The selected option is \(input)")
 
-switch input{
-case 1:
-    accountType = "debit"
-case 2:
-    accountType = "credit"
-case 3:
-    accountType = "generic"
-default:
-    break
-}
+    switch input{
+    case 1:
+        accountType = "debit"
+    case 2:
+        accountType = "credit"
+    case 3:
+        accountType = "generic"
+    default:
+        break
+    }
+} while accountType == ""
+
 //Step 4: Display account type
 print("You have opened a \(accountType) account.")
