@@ -1,5 +1,5 @@
 import UIKit
-
+//PART 1
 //Step 1: Start the virtual bank system interface
 
 print("Welcome to your virtual bank system. What kind of account would you like to make?")
@@ -33,3 +33,63 @@ repeat {
 
 //Step 4: Display account type
 print("You have opened a \(accountType) account.")
+
+//PART 2
+//S​tep 1: Create the balance variable
+var balance = 100
+
+//Step2: Create a func to get the balance.
+func getBalanceInfo () -> String{
+    return "Current balance: R$\(balance)"
+}
+getBalanceInfo()
+
+//Step 3: Implement the withdrawal operation for generic and credit bank accounts
+
+func withdraw(_ amount: Int) {
+    balance -= amount
+    print("Withdrew: R$\(amount). \(getBalanceInfo())")
+    
+}
+//Step 4: Test the withdrawal operation
+withdraw(20)
+
+//Step 5: Implement the withdrawal operation for debit accounts
+func debitWithdraw(_ amount: Int){
+    if amount > balance{
+            print("Insufficient fund to withdraw R$\(amount). \(getBalanceInfo())")
+    } else {
+        withdraw(amount)
+    }
+}
+
+//Step 6: Test the withdrawal operation
+debitWithdraw(81)
+debitWithdraw(80)
+
+//Step 7: Implement the deposit operation for generic and debit accounts
+func deposit(_ amount: Int){
+    if ((balance + amount) != 0) {
+        balance += amount
+        print("Deposited R$\(amount). \(getBalanceInfo())")
+    }
+}
+
+//Step 8: Test the deposit operation for generic and debit accounts
+deposit(100)
+
+//Step 9: Implement the deposit operation for credit accounts
+func creditDeposit(_ amount: Int){
+    deposit(amount)
+    if balance == 0 {
+        print("Paid off account balance.")
+    } else if balance > 0{
+        print("Overpaid account balance.")
+    }
+}
+
+//Step 10: Test the deposit operation.
+withdraw(200)
+creditDeposit(50)
+creditDeposit(50)
+creditDeposit(100)
